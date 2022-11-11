@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HollywoodClient", "HollywoodClient\HollywoodClient.csproj", "{1ED83886-750A-4FE2-A7CC-F518CE41D992}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1ED83886-750A-4FE2-A7CC-F518CE41D992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED83886-750A-4FE2-A7CC-F518CE41D992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED83886-750A-4FE2-A7CC-F518CE41D992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED83886-750A-4FE2-A7CC-F518CE41D992}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FDDB801-1920-4E81-A913-95996E92F476}
+	EndGlobalSection
+EndGlobal
