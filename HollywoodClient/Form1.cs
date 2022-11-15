@@ -88,13 +88,47 @@ namespace HollywoodClient
             var b64 = Convert.ToBase64String(buff);
             var movieId = (int)cbMovies.SelectedValue;
             var mi = new MovieImage { MovieId = movieId, Picture = b64 };
-            //
             var miJson = JsonSerializer.Serialize(mi);
             var content = new StringContent(miJson, Encoding.UTF8, "application/json");
-            using (HttpClient client = new HttpClient())
+            using HttpClient client = new HttpClient();
+            var result = await client.PostAsync(url, content);
+        }
+
+        private async void btDisplay_ClickAsync(object sender, EventArgs e)
+        {
+            string url = "http://localhost:37114/api/movies";
+            int movieId = (int)(cbMovies.SelectedValue);
+            using HttpClient client = new HttpClient();
+            var response = await client.GetAsync(url);
+            if (response.IsSuccessStatusCode)
             {
-                var result = await client.PostAsync(url, content);
+                string responseText = await response.Content.ReadAsStringAsync();
+                List<MovieImage> list = JsonSerializer.Deserialize<List<MovieImage>>(responseText, options);
+                int count = 1;
+                foreach (MovieImage item in list)
+                {
+                    if (item.MovieId != movieId) continue;
+                    createTab("picture" + count++, Base64ToBitmap(item.Picture));
+                }
             }
+        }
+
+        public static Bitmap Base64ToBitmap(string base64String)
+        {
+            Bitmap bmp = null;
+            //Convert Base64 string to byte[]
+            byte[] byteBuffer = Convert.FromBase64String(base64String);
+            MemoryStream memoryStream = new MemoryStream(byteBuffer);
+
+            memoryStream.Position = 0;
+
+            bmp = (Bitmap)Bitmap.FromStream(memoryStream);
+
+            memoryStream.Close();
+            memoryStream = null;
+            byteBuffer = null;
+
+            return bmp;
         }
     }
 }
